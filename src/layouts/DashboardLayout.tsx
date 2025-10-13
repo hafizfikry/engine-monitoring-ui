@@ -1,4 +1,8 @@
 import type { ReactNode } from "react"
+import { 
+  NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, 
+  NavigationMenuContent, NavigationMenuLink
+ } from "@/components/ui/navigation-menu"
 
 interface DashboardLayoutProps {
   children: ReactNode
@@ -6,15 +10,26 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen flex bg-gray-100">
-      <aside className="w-64 bg-blue-900 text-white p-4">
-        <h1 className="text-xl font-bold mb-6">Engine Monitor</h1>
-        <nav className="space-y-2">
-          <a href="#" className="block hover:text-blue-300">Dashboard</a>
-          <a href="#" className="block hover:text-blue-300">Logs</a>
-          <a href="#" className="block hover:text-blue-300">Settings</a>
-        </nav>
-      </aside>
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      <header className="bg-white shadow p-2">
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <NavigationMenuLink href="#">Engine</NavigationMenuLink>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Settings</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <NavigationMenuLink href="#">Preferences</NavigationMenuLink>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </header>
 
       <main className="flex-1 p-6">
         {children}
