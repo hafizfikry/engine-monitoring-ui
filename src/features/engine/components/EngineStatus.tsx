@@ -17,44 +17,31 @@ export default function EngineStatus() {
       <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
         <CardContent className="p-4 flex flex-col items-center">
           <h3 className="font-semibold text-bridge-accent mb-2">Power (kW)</h3>
-          <p className="text-3xl font-bold text-bridge-success">{data.power.toFixed(1)}</p>
+          {/* <p className="text-3xl font-bold text-bridge-success">{data.power.toFixed(1)}</p> */}
           <div className="w-auto">
             <GaugeComponent
-              className="grafana-gauge"
+              id="simple-gauge"
               minValue={0}
               maxValue={750}
-              type="semicircle"
               arc={{
-                width: 0.3,
+                colorArray: ["#00FF9C", "#FFB800", "#FF4E4E"], // default OpenBridge-style green → amber → red
+                subArcs: [{ limit: 250 }, { limit: 500 }, { limit: 750 }],
+                width: 0.25,
                 padding: 0.02,
-                cornerRadius: 1,
-                gradient: true,
-                subArcs: [
-                  { limit: 150, color: "#00C48C" },
-                  { limit: 450, color: "#FFA500" },
-                  { limit: 750, color: "#FF3B30" },
-                ],
+                cornerRadius: 6,
               }}
               value={data.power}
               labels={{
-                valueLabel: {
-                  formatTextValue: (value: number) => `${value.toFixed(0)} kW`,
-                  style: { fill: "#00AEEF", fontSize: "1.25rem", fontWeight: "bold" },
-                },
+                valueLabel: { formatTextValue: value => value + 'Kw' },
                 tickLabels: {
-                  type: "inner",
                   defaultTickValueConfig: {
-                    formatTextValue: (v: number) => v.toString(),
-                    style: { fill: "#ffffff", fontSize: "0.75rem" },
-                  },
-                },
+                    style: {
+                      textShadow: "black 1px 1px 0px, black 0px 0px 2.5em, black 0px 0px 0.2em",
+                    }
+                  }
+                }
               }}
-              pointer={{
-                color: "#00AEEF",
-                length: 0.8,
-                width: 6,
-                elastic: true,
-              }}
+              pointer={{ elastic: true }}
               style={{ width: "100%", height: "auto"}}
             />
           </div>
@@ -65,9 +52,9 @@ export default function EngineStatus() {
       <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
         <CardContent className="p-4 flex flex-col items-center">
           <h3 className="font-semibold text-bridge-accent mb-2">Voltage (V)</h3>
-          <p className="text-3xl font-bold text-bridge-success">{data.voltage.toFixed(1)}</p>
+          {/* <p className="text-3xl font-bold text-bridge-success">{data.voltage.toFixed(1)}</p> */}
           <div className="w-auto">
-            <GaugeComponent
+            {/* <GaugeComponent
               minValue={400}
               maxValue={500}
               value={data.voltage}
@@ -94,7 +81,7 @@ export default function EngineStatus() {
                 elastic: true,
                 animationDelay: 0
               }}
-            />
+            /> */}
           </div>
         </CardContent>
       </Card>
