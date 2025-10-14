@@ -12,31 +12,44 @@ export default function EngineStatus() {
   }))
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-9 p-2 bg-bridge-dark min-h-screen text-white">
+    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-2 bg-bridge-dark text-white items-stretch">
       {/* Power Gauge */}
-      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
-        <CardContent className="p-4 flex flex-col items-center">
+      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
+        <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
           <h3 className="font-semibold text-bridge-accent mb-2">Power (kW)</h3>
           {/* <p className="text-3xl font-bold text-bridge-success">{data.power.toFixed(1)}</p> */}
-          <div className="w-auto">
+          <div className="w-auto h-auto flex justify-center">
             <GaugeComponent
               id="simple-gauge"
               minValue={0}
               maxValue={750}
               arc={{
-                colorArray: ["#00FF9C", "#FFB800", "#FF4E4E"], // default OpenBridge-style green → amber → red
-                subArcs: [{ limit: 250 }, { limit: 500 }, { limit: 750 }],
+                // colorArray: ["#00FF9C", "#FFB800", "#FF4E4E"], // default OpenBridge-style green → amber → red
+                subArcs: [
+                  { limit: 250, color: "#00FF9C", showTick: true }, 
+                  { limit: 500, color: "#FFB800", showTick: true }, 
+                  { limit: 750, color: "#FF4E4E", showTick: true },
+                  { color: '#EA4228' }
+                ],
                 width: 0.25,
                 padding: 0.02,
                 cornerRadius: 6,
+                // gradient: true,  
               }}
               value={data.power}
               labels={{
-                valueLabel: { formatTextValue: value => value + 'Kw' },
+                valueLabel: { 
+                  formatTextValue: value => value + 'Kw',
+                  style: {
+                    color: "#00FF9C", // ✅ ubah warna teks utama
+                    textShadow: "0 0 6px black, 0 0 12px rgba(0,0,0,0.6)",
+                    fontWeight: "bold",
+                  }
+                },
                 tickLabels: {
                   defaultTickValueConfig: {
                     style: {
-                      textShadow: "black 1px 1px 0px, black 0px 0px 2.5em, black 0px 0px 0.2em",
+                      textShadow: "black 0px 0px 0px, black 0px 0px 0em, black 0px 0px 0em",
                     }
                   }
                 }
@@ -49,104 +62,45 @@ export default function EngineStatus() {
       </Card>
 
       {/* Voltage */}
-      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
-        <CardContent className="p-4 flex flex-col items-center">
+      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
+        <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
           <h3 className="font-semibold text-bridge-accent mb-2">Voltage (V)</h3>
           {/* <p className="text-3xl font-bold text-bridge-success">{data.voltage.toFixed(1)}</p> */}
-          <div className="w-auto">
-            {/* <GaugeComponent
-              minValue={400}
-              maxValue={500}
-              value={data.voltage}
-              type="radial"
-              labels={{
-                tickLabels: {
-                  type: "inner",
-                  ticks: [
-                    { value: 420 },
-                    { value: 440 },
-                    { value: 460 },
-                    { value: 480 },
-                    { value: 500 }
-                  ]
-                }
-              }}
-              arc={{
-                colorArray: ['#5BE12C','#EA4228'],
-                subArcs: [{limit: 420}, {limit: 440}, {limit: 460}, {limit: 480}, {limit: 500}],
-                padding: 0.02,
-                width: 0.3
-              }}
-              pointer={{
-                elastic: true,
-                animationDelay: 0
-              }}
-            /> */}
+          <div className="w-auto h-auto flex justify-center">
+            
           </div>
         </CardContent>
       </Card>
 
       {/* Current */}
-      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
-        <CardContent className="p-4 flex flex-col items-center">
+      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
+        <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
           <h3 className="font-semibold text-bridge-accent mb-2">Current (A)</h3>
           <p className="text-3xl font-bold text-bridge-warning">{data.current.toFixed(1)}</p>
         </CardContent>
       </Card>
 
       {/* Speed */}
-      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
-        <CardContent className="p-4 flex flex-col items-center">
+      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
+        <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
           <h3 className="font-semibold text-bridge-accent mb-2">Speed (RPM)</h3>
           <p className="text-3xl font-bold text-bridge-danger">{data.speed.toFixed(0)}</p>
         </CardContent>
       </Card>
 
       {/* Frequency */}
-      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg">
-        <CardContent className="p-4 flex flex-col items-center">
+      <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
+        <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
           <h3 className="font-semibold text-bridge-accent mb-2">Frequency (Hz)</h3>
           <p className="text-3xl font-bold text-bridge-success">{data.frequency.toFixed(1)}</p>
-          <div className="w-auto">
-            <GaugeComponent
-              id="gauge-component4"
-              arc={{
-                gradient: true,
-                width: 0.15,
-                padding: 0,
-                subArcs: [
-                  {
-                    limit: 15,
-                    color: '#EA4228',
-                    showTick: true
-                  },
-                  {
-                    limit: 37,
-                    color: '#F5CD19',
-                    showTick: true
-                  },
-                  {
-                    limit: 58,
-                    color: '#5BE12C',
-                    showTick: true
-                  },
-                  {
-                    limit: 75,
-                    color: '#F5CD19',
-                    showTick: true
-                  },
-                  { color: '#EA4228' }
-                ]
-              }}
-              value={data.frequency}
-              pointer={{type: "arrow", elastic: true}}
-            />
+          <div className="w-auto h-auto flex justify-center">
+
           </div>
         </CardContent>
       </Card>
 
       {/* Power Trend */}
-      <Card className="col-span-2 lg:col-span-4 bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg mt-4">
+      <Card className="col-span-2 lg:col-span-4 bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full mt-4">
         <CardContent className="p-4">
           <h3 className="font-semibold text-bridge-accent mb-4">Power Trend (kW)</h3>
           <div className="overflow-x-auto">

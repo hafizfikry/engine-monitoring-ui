@@ -1,8 +1,14 @@
 import type { ReactNode } from "react"
-import { 
-  NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, 
-  NavigationMenuContent, NavigationMenuLink
- } from "@/components/ui/navigation-menu"
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink
+} from "@/components/ui/navigation-menu"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
 
 interface DashboardLayoutProps {
   children: ReactNode
@@ -10,30 +16,50 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-white shadow p-2">
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <NavigationMenuLink href="#">Engine</NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+    <SidebarProvider>
+      <div className="h-screen flex overflow-hidden">
+        {/* Sidebar overlay */}
+        <AppSidebar />
 
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Settings</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <NavigationMenuLink href="#">Preferences</NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </header>
+        {/* Area utama */}
+        <div className="flex-1 flex flex-col w-full">
+          {/* HEADER */}
+          <header className="bg-white shadow fixed top-0 left-0 right-0 z-50 h-14 flex items-center">
+            <div className="max-w-screen-3xl mx-auto px-6 flex items-center h-full">
+              <NavigationMenu viewport={false}>
+                <NavigationMenuList>
 
-      <main className="flex-1 p-6">
-        {children}
-      </main>
-    </div>
+                  <NavigationMenuItem>
+                    <SidebarTrigger />
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <NavigationMenuLink href="#">Engine</NavigationMenuLink>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>Settings</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <NavigationMenuLink href="#">Preferences</NavigationMenuLink>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </header>
+
+          {/* MAIN CONTENT */}
+          <main className="flex-1 overflow-y-auto p-6 pt-20">
+            <div className="max-w-screen-3xl mx-auto px-6">
+              {children}
+            </div>
+          </main>
+        </div>
+      </div>
+    </SidebarProvider>
   )
 }
+
