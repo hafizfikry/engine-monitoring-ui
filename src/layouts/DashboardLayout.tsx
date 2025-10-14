@@ -21,39 +21,42 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Sidebar overlay */}
         <AppSidebar />
 
-        {/* Area utama */}
         <div className="flex-1 flex flex-col w-full">
           {/* HEADER */}
-          <header className="bg-white shadow fixed top-0 left-0 right-0 z-50 h-14 flex items-center">
-            <div className="max-w-screen-3xl mx-auto px-6 flex items-center h-full">
-              <NavigationMenu viewport={false}>
-                <NavigationMenuList>
-
-                  <NavigationMenuItem>
-                    <SidebarTrigger />
-                  </NavigationMenuItem>
-
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <NavigationMenuLink href="#">Engine</NavigationMenuLink>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Settings</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <NavigationMenuLink href="#">Preferences</NavigationMenuLink>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
-          </header>
+          {/* <header className="bg-white shadow fixed top-0 left-0 right-0 z-50 h-14 flex items-center">
+          </header> */}
 
           {/* MAIN CONTENT */}
-          <main className="flex-1 overflow-y-auto p-6 pt-20">
-            <div className="max-w-screen-3xl mx-auto px-6">
+          <main className="flex-1 overflow-y-auto p-6 ">
+
+            <div className="px-4 pt-2">
+              <div className="bg-white shadow h-14 flex items-center rounded-2xl px-3">
+                <NavigationMenu viewport={false} className="p-3">
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <SidebarTrigger />
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <NavigationMenuLink href="#">Engine</NavigationMenuLink>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>Settings</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <NavigationMenuLink href="#">Preferences</NavigationMenuLink>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
+            </div>
+
+
+            <div className="max-w-screen-3xl mx-auto px-6 mt-3">
               {children}
             </div>
           </main>

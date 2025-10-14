@@ -12,7 +12,7 @@ export default function EngineStatus() {
   }))
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-2 bg-bridge-dark text-white items-stretch">
+    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 bg-bridge-dark text-white items-stretch">
       {/* Power Gauge */}
       <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
         <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
@@ -44,6 +44,7 @@ export default function EngineStatus() {
                     color: "#00FF9C", // ✅ ubah warna teks utama
                     textShadow: "0 0 6px black, 0 0 12px rgba(0,0,0,0.6)",
                     fontWeight: "bold",
+                    fontSize: "30px",
                   }
                 },
                 tickLabels: {
@@ -55,7 +56,7 @@ export default function EngineStatus() {
                 }
               }}
               pointer={{ elastic: true }}
-              style={{ width: "100%", height: "auto"}}
+              style={{ width: "100%", height: "auto", maxWidth: "250px"}}
             />
           </div>
         </CardContent>
