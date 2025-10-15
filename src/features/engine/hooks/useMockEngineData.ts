@@ -15,9 +15,9 @@ export function useMockEngineData() {
     const interval = setInterval(() => {
       setData({
         power: Math.random() * 500,
-        voltage: 440 + Math.random() * 5,
+        voltage: 440 * Math.random() + 5,
         current: Math.random() * 800,
-        frequency: 60 + Math.random() * 0.2,
+        frequency: 60 * Math.random() + 2,
         speed: 1500 + Math.random() * 100,
         timestamp: new Date().toISOString()
       })
