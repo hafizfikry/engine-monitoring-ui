@@ -80,7 +80,7 @@ function GaugeCardEngine({title, gaugeComponentType}: EngineCardData) {
                 }
               }}
               pointer={{ elastic: true }}
-              style={{ width: "100%", height: "auto", maxWidth: "250px"}}
+              style={{ width: "auto", height: "auto"}}
             />
 		}
 	}
