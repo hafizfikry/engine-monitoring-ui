@@ -1,7 +1,7 @@
 import React from "react";
 import GaugeComponent from "react-gauge-component"
 import { Field, FieldSet, FieldLegend, FieldGroup,  } from "@/components/ui/field";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 
 export default function EngineOverlay() {
 
@@ -138,7 +138,7 @@ export default function EngineOverlay() {
       </div>
 
       {/* Field Box */}
-      {/* <div className="absolute" style={{top: "40%", left: "40%"}}>
+      <div className="absolute" style={{top: "40%", left: "40%"}}>
         <Card className="bg-white/80 backdrop-blur-sm border border-gray-300 shadow-lg">
           <CardContent>
             <FieldSet>
@@ -146,7 +146,7 @@ export default function EngineOverlay() {
             </FieldSet>
           </CardContent>
         </Card>
-      </div> */}
+      </div>
     </div>
   );
 }

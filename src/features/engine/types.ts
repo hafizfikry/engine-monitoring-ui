@@ -6,3 +6,10 @@ export interface EngineData {
     speed: number
     timestamp: string
 }
+
+export interface GaugeComponentType {
+    value: number
+    maxValue: number
+    type?: "radial"
+    mainColor: string
+}
