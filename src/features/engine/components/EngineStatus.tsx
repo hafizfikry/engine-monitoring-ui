@@ -201,7 +201,7 @@ export default function EngineStatus() {
       </Card>
 
       {/* Power Trend */}
-      <Card className="col-span-2 lg:col-span-4 bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full mt-4 row-span-2">
+      <Card className="col-span-2 lg:col-span-3 bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full mt-4 row-span-2">
         <CardContent className="p-4">
           <h3 className="font-semibold text-bridge-accent mb-4">Generator Engine</h3>
           <div className="w-auto h-auto flex justify-center">

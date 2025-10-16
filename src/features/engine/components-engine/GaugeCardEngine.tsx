@@ -102,7 +102,7 @@ function GaugeEngine({title, gaugeComponentType}: EngineCardData) {
 	const renderGauge = () => {
 		if (gaugeComponentType.type === "radial") {
 			return <>
-							<h3 className="font-semibold text-bridge-accent mb-2">{title}</h3>
+							<h3 className="font-semibold text-bridge-accent mb-1">{title}</h3>
 							<GaugeComponent
 								value={Number(gaugeComponentType.value.toFixed(1))}
 								maxValue={gaugeComponentType.maxValue}
@@ -139,7 +139,7 @@ function GaugeEngine({title, gaugeComponentType}: EngineCardData) {
 						</>
 		} else {
 			return <>
-							<h3 className="font-semibold text-bridge-accent mb-2">{title}</h3>
+							<h3 className="font-semibold text-bridge-accent mb-0">{title}</h3>
 							<GaugeComponent
 								id="simple-gauge"
 								maxValue={gaugeComponentType.maxValue}
