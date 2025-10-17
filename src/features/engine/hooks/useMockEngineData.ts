@@ -47,7 +47,7 @@ export function useMockEngineDataRQ(name: string) {
     },
     voltage: 440,
     current: 120,
-    power: null,
+    power: 2500,
     status: "Running",
     updatedAt: new Date().toISOString(),
   })

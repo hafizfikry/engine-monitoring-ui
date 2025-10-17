@@ -22,7 +22,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="FO Inlet Pressure (Kg/cm2)"
           gaugeComponentType={{
-            value: data.power,
+            value: data?.power ?? 100,
             maxValue: 2600,
             mainColor: "#00A31E"
           }}
@@ -31,7 +31,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="FO Filter Inlet Pressure (Kg/cm2)"
           gaugeComponentType={{
-            value: data.voltage,
+            value: data?.voltage ?? 100,
             maxValue: 500,
             mainColor: "#00A31E"
           }}
@@ -40,7 +40,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="FO Inlet Temperature (℃)"
           gaugeComponentType={{
-            value: data.current,
+            value: data?.current ?? 100,
             maxValue: 150,
             mainColor: "#00A31E"
           }}
@@ -49,7 +49,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LO Inlet Pressure (kg/cm2)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#51B85F"
           }}
@@ -58,7 +58,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LO Filter Inlet Pressure (kg/cm2)"
           gaugeComponentType={{
-            value: data.load,
+            value: data?.load ?? 100,
             maxValue: 80,
             mainColor: "#51B85F"
           }}
@@ -67,7 +67,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LO Inlet Temperature (℃)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#51B85F"
           }}
@@ -80,7 +80,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="HT Water Inlet Press (kg/cm2)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#47CEFF"
           }}
@@ -90,7 +90,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="HT Water Inlet Temp (℃)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#47CEFF"
           }}
@@ -99,7 +99,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="HT Water Outlet Temp (℃)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#47CEFF"
           }}
@@ -108,7 +108,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LT Water Inlet Press (kg/cm2)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#00AEEF"
           }}
@@ -117,7 +117,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LT Water Inlet Temp (℃)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#00AEEF"
           }}
@@ -126,7 +126,7 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LT Water Outlet Temp (℃)"
           gaugeComponentType={{
-            value: data.rpm,
+            value: data?.rpm ?? 100,
             maxValue: 800,
             mainColor: "#00AEEF"
           }}
@@ -180,7 +180,7 @@ export default function Engine() {
             <GaugeEngine
               title="Charge Air Pressure (kg/cm2)"
               gaugeComponentType={{
-                value: data.rpm,
+                value: data?.rpm ?? 100,
                 maxValue: 800,
                 mainColor: "#00AEEF"
               }} 
@@ -188,7 +188,7 @@ export default function Engine() {
             <GaugeEngine
               title="Charge Air Temp (℃)"
               gaugeComponentType={{
-                value: data.rpm,
+                value: data?.rpm ?? 100,
                 maxValue: 800,
                 mainColor: "#00AEEF"
               }} 
