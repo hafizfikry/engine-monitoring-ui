@@ -1,15 +1,21 @@
-import { useMockEngineData } from "./hooks/useMockEngineData"
+// import { useMockEngineDataRQ } from "./hooks/useMockEngineData"
 import {Card, CardContent} from "@/components/ui/card"
 import EngineOverlay from "@/features/engine/components/EngineOverlay"
 import { GaugeCardEngine, GaugeEngine } from "@/features/engine/components/GaugeCardEngine"
-// import { useEngineDataRQ } from "./hooks/useEngineDataRQ"
+import { useEngineDataRQ } from "./hooks/useEngineDataRQ"
+import { useParams } from "react-router-dom"
 
 export default function Engine() {
-  const data = useMockEngineData()
-  // const { data, isLoading, error } = useEngineDataRQ(apiUrl)
+
+  const { engineId } = useParams<{engineId: string}>()
+
+  const apiUrl = engineId ? `mock://engine${engineId}` : null
+  
+  const { data } = useEngineDataRQ(apiUrl)
 
   return (
     <div className="bg-bridge-dark text-white">
+      <h2 className="font-bold text-bridge-accent text-black">{data?.name}</h2>
 
       {/* FO LO */}
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
@@ -17,7 +23,7 @@ export default function Engine() {
           title="FO Inlet Pressure (Kg/cm2)"
           gaugeComponentType={{
             value: data.power,
-            maxValue: 500,
+            maxValue: 2600,
             mainColor: "#00A31E"
           }}
         />
@@ -35,7 +41,7 @@ export default function Engine() {
           title="FO Inlet Temperature (℃)"
           gaugeComponentType={{
             value: data.current,
-            maxValue: 700,
+            maxValue: 150,
             mainColor: "#00A31E"
           }}
         />
@@ -43,8 +49,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LO Inlet Pressure (kg/cm2)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#51B85F"
           }}
         />
@@ -52,8 +58,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LO Filter Inlet Pressure (kg/cm2)"
           gaugeComponentType={{
-            value: data.frequency,
-            maxValue: 60,
+            value: data.load,
+            maxValue: 80,
             mainColor: "#51B85F"
           }}
         />
@@ -61,8 +67,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LO Inlet Temperature (℃)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#51B85F"
           }}
         />
@@ -74,8 +80,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="HT Water Inlet Press (kg/cm2)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#47CEFF"
           }}
         />
@@ -84,8 +90,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="HT Water Inlet Temp (℃)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#47CEFF"
           }}
         />
@@ -93,8 +99,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="HT Water Outlet Temp (℃)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#47CEFF"
           }}
         />
@@ -102,8 +108,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LT Water Inlet Press (kg/cm2)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#00AEEF"
           }}
         />
@@ -111,8 +117,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LT Water Inlet Temp (℃)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#00AEEF"
           }}
         />
@@ -120,8 +126,8 @@ export default function Engine() {
         <GaugeCardEngine 
           title="LT Water Outlet Temp (℃)"
           gaugeComponentType={{
-            value: data.speed,
-            maxValue: 1800,
+            value: data.rpm,
+            maxValue: 800,
             mainColor: "#00AEEF"
           }}
         />
@@ -174,16 +180,16 @@ export default function Engine() {
             <GaugeEngine
               title="Charge Air Pressure (kg/cm2)"
               gaugeComponentType={{
-                value: data.speed,
-                maxValue: 1800,
+                value: data.rpm,
+                maxValue: 800,
                 mainColor: "#00AEEF"
               }} 
             />
             <GaugeEngine
               title="Charge Air Temp (℃)"
               gaugeComponentType={{
-                value: data.speed,
-                maxValue: 1800,
+                value: data.rpm,
+                maxValue: 800,
                 mainColor: "#00AEEF"
               }} 
             />

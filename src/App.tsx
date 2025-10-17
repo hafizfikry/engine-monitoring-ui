@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route element={<DashboardLayout />}>
-          <Route path='/engine' element={<Engine />} />
+          <Route path='/engine/:engineId' element={<Engine />} />
         </Route>
       </Routes>
     </Router>

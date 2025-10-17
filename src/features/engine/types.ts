@@ -7,6 +7,28 @@ export interface EngineData {
     timestamp: string
 }
 
+export interface EngineDataRQ {
+    id: string,
+    name: string,
+    rpm: number,
+    load: number,
+    temperature: {
+        exhaust: number,
+        coolant: number,
+        lubeOil: number
+    },
+    pressure: {
+        fuel: number
+        lubeOil: number,
+        air: number
+    },
+    voltage: number,
+    current: number,
+    power: number,
+    status: string,
+    updatedAt: string
+}
+
 export interface GaugeComponentType {
     value: number
     maxValue: number

@@ -16,19 +16,19 @@ const navMain = [
         items: [
             {
                 title: "DG 1",
-                url: "/engine",
+                url: "/engine/1",
             },
             {
                 title: "DG 2",
-                url: "/engine",
+                url: "/engine/2",
             },
             {
                 title: "DG 3",
-                url: "/engine",
+                url: "/engine/3",
             },
             {
                 title: "DG 4",
-                url: "/engine",
+                url: "/engine/4",
             },
         ]
     }
