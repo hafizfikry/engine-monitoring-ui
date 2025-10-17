@@ -2,41 +2,36 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
   SidebarHeader,
-  SidebarMenuItem,
-  SidebarMenuButton,
 } from "@/components/ui/sidebar"
-import { Power } from "lucide-react"
+import { BatteryCharging } from "lucide-react"
+import { NavMain } from "@/components/ui/nav-main"
 
-const items = [
+const navMain = [
     {
         title: "Power",
         url: "#",
-        icon: Power
-    },
-    {
-        title: "DG 1",
-        url: "#",
-        icon: Power
-    },
-    {
-        title: "DG 2",
-        url: "#",
-        icon: Power
-    },
-    {
-        title: "DG 3",
-        url: "#",
-        icon: Power
-    },
-    {
-        title: "DG 4",
-        url: "#",
-        icon: Power
-    },
+        icon: BatteryCharging,
+        isActive: false,
+        items: [
+            {
+                title: "DG 1",
+                url: "/engine",
+            },
+            {
+                title: "DG 2",
+                url: "/engine",
+            },
+            {
+                title: "DG 3",
+                url: "/engine",
+            },
+            {
+                title: "DG 4",
+                url: "/engine",
+            },
+        ]
+    }
 ]
 
 export function AppSidebar() {
@@ -45,21 +40,7 @@ export function AppSidebar() {
       <SidebarHeader />
 
       <SidebarContent>
-        <SidebarGroup>
-            <SidebarGroupLabel>Power</SidebarGroupLabel>
-            <SidebarGroupContent>
-                {items.map((item) => (
-                    <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild>
-                            <a href={item.url}>
-                                <item.icon />
-                                <span>{ item.title }</span>
-                            </a>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                ))}
-            </SidebarGroupContent>
-        </SidebarGroup>
+        <NavMain items={navMain} />
       </SidebarContent>
 
       <SidebarFooter />

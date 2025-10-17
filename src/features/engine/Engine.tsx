@@ -1,16 +1,18 @@
-import { useMockEngineData } from "../hooks/useMockEngineData"
+import { useMockEngineData } from "./hooks/useMockEngineData"
 import {Card, CardContent} from "@/components/ui/card"
-import EngineOverlay from "@/features/engine/components-engine/EngineOverlay"
-import { GaugeCardEngine, GaugeEngine } from "@/features/engine/components-engine/GaugeCardEngine"
+import EngineOverlay from "@/features/engine/components/EngineOverlay"
+import { GaugeCardEngine, GaugeEngine } from "@/features/engine/components/GaugeCardEngine"
+// import { useEngineDataRQ } from "./hooks/useEngineDataRQ"
 
-export default function EngineStatus() {
+export default function Engine() {
   const data = useMockEngineData()
+  // const { data, isLoading, error } = useEngineDataRQ(apiUrl)
 
   return (
     <div className="bg-bridge-dark text-white">
 
       {/* FO LO */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
         <GaugeCardEngine 
           title="FO Inlet Pressure (Kg/cm2)"
           gaugeComponentType={{
@@ -67,7 +69,7 @@ export default function EngineStatus() {
       </div>
       
       {/* HT LT */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
       
         <GaugeCardEngine 
           title="HT Water Inlet Press (kg/cm2)"
@@ -127,9 +129,9 @@ export default function EngineStatus() {
       </div>
 
       {/* Generator Engine */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-5 p-2 items-stretch">
         {/* Info */}
-        <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full col-span-1">
+        <Card className="bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full">
           <CardContent className="p-4 flex flex-col items-center justify-center h-auto">
             <h3 className="font-semibold text-bridge-accent mb-2">Turbo Charger</h3>
             <div className="w-auto h-auto flex justify-center">
@@ -189,7 +191,7 @@ export default function EngineStatus() {
         </Card>
 
         {/* Engine Overlay */}
-        <Card className="col-span-2 lg:col-span-3 bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full row-span-2">
+        <Card className="sm:col-span-1 md:col-span-2 lg:col-span-3 bg-bridge-medium border border-bridge-accent rounded-2xl shadow-lg w-full row-span-2">
           <CardContent className="p-4">
             <h3 className="font-semibold text-bridge-accent mb-4">Generator Engine</h3>
             <div className="w-auto h-auto flex justify-center">

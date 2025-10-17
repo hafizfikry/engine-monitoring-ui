@@ -1,13 +1,9 @@
-import type { ReactNode } from "react"
+import { Outlet } from "react-router-dom"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { AppNavbar } from "@/components/app-navbar"
 
-interface DashboardLayoutProps {
-  children: ReactNode
-}
-
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function DashboardLayout() {
   return (
     <SidebarProvider>
       <div className="h-screen flex overflow-hidden">
@@ -26,7 +22,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </div>
 
             <div className="max-w-screen-3xl mx-auto px-6 mt-3">
-              {children}
+              <Outlet />
             </div>
           </main>
         </div>

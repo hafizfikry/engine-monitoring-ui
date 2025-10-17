@@ -13,3 +13,6 @@ export interface GaugeComponentType {
     type?: "radial"
     mainColor: string
 }
+
+export type EngineKeyType = "main" | "aux" | "emergency" | "shaft" | string
+export type EngineNumber = 1 | 2 | 3 | 4 | number

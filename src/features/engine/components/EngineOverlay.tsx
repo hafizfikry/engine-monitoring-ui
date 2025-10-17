@@ -18,6 +18,18 @@ export default function EngineOverlay() {
     { id: 8, top: "15%", left: "68.4%" },
   ];
 
+  const tripConditions = [
+    "Common shutdown",
+    "LO in pressure Low",
+    "Shutdown fr. safety",
+    "HTW out temp high",
+    "Overspeed (Control)",
+    "Both taco failure",
+    "Overspeed (Safety)",
+    "Em'cy shutdown",
+  ];
+
+
   return (
     <div className="relative w-full max-w-6xl mx-auto">
       <img
@@ -146,7 +158,7 @@ export default function EngineOverlay() {
             <FieldSet>
                 <FieldLegend>Trip Conditions</FieldLegend>
                 <FieldGroup className="grid grid-cols-2 gap-x-2 gap-y-1">
-                  {[...Array(8)].map((_, i) => (
+                  {tripConditions.map((label, i) => (
                   <Field key={i} orientation={"horizontal"} className="flex items-center space-x-1">
                     <label className="flex items-center space-x-1 cursor-pointer">
                     <input
@@ -164,7 +176,7 @@ export default function EngineOverlay() {
                       "
                     />
                     <FieldLabel htmlFor={`check-${i}`} className="text-[10px] font-medium select-none">
-                      Option {i + 1}
+                      {label}
                     </FieldLabel>
                   </label>
                   </Field>
