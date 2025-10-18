@@ -3,8 +3,9 @@ import DashboardLayout from './layouts/DashboardLayout'
 import '@/styles/App.css'
 
 // Pages
-import Engine from '@/features/engine/Engine'
+// import Engine from '@/features/engine/Engine'
 import Dashboard from './pages/DashboardPage'
+import EnginePage from './pages/EnginePage'
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route element={<DashboardLayout />}>
           <Route path='/' element={<Dashboard />} />
-          <Route path='/engine/:engineId' element={<Engine />} />
+          <Route path='/engine/:engineId' element={<EnginePage />} />
         </Route>
       </Routes>
     </Router>

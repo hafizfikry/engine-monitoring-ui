@@ -4,8 +4,25 @@ import EngineOverlay from "@/features/engine/components/EngineOverlay"
 import { GaugeCardEngine, GaugeEngine } from "@/features/engine/components/GaugeCardEngine"
 import { useEngineDataRQ } from "./hooks/useEngineDataRQ"
 import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 
-export default function Engine() {
+type EngineData = {
+  rpm: number
+}
+
+type EngineProps = {
+  onData?: (data: EngineData) => void
+}
+
+export default function Engine({ onData } : EngineProps) {
+
+  const dataNav: EngineData = {
+    rpm: 720,
+  }
+
+  useEffect(() => {
+    onData?.(dataNav)
+  }, [onData]);
 
   const { engineId } = useParams<{engineId: string}>()
 

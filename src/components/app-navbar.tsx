@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { SidebarTrigger } from "./ui/sidebar"
 
-export function AppNavbar() {
+export function AppNavbar({ title } : { title: string }) {
     return (
         <NavigationMenu viewport={false} className="p-3">
             <NavigationMenuList>
@@ -27,6 +27,13 @@ export function AppNavbar() {
                     <NavigationMenuTrigger>Settings</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <NavigationMenuLink href="#">Preferences</NavigationMenuLink>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>{title}</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <NavigationMenuLink href="#">{title}</NavigationMenuLink>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
             </NavigationMenuList>
